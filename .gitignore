@@ -1,4 +1,4 @@
-node_modules
-conf.json
+public/conf.json
 package-lock.json
-package.json
+node_modules
+ca.pem
