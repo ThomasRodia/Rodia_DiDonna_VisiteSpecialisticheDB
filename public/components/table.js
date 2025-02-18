@@ -5,10 +5,10 @@ const createTable = (parentElement) => {
             data = dataInput;
         },
         render: () => {
-            let htmlTable = '<table class="table border border-dark">';
+            let htmlTable = '<table class="table table-striped">';
             htmlTable += data.map((row) =>
                 "<tr>" + row.map((col) =>
-                    "<td class='border border-dark'>" + col + "</td>"
+                    "<td>" + col + "</td>"
                 ).join("")
             ).join("") + "</tr>";
             htmlTable += "</table>";

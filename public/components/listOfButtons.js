@@ -10,10 +10,10 @@ const createListOfButtons = (parentElement) => {
         render: () => {
             let buttons = ""; 
             buttons += data.map((e, index) => `
-                <button type="button" id="button${index}" class="btn btn-secondary">${e}</a>
+                <button type="button" id="button${index}" class="btn btn-outline-warning">${e}</a>
             `).join("\n");
             parentElement.innerHTML = buttons;
-            const btnList = document.querySelectorAll(".btn-secondary");
+            const btnList = document.querySelectorAll(".btn-outline-warning");
 
             btnList.forEach((btn) => {
                 btn.onclick = function () {
