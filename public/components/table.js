@@ -17,27 +17,7 @@ const createTable = (parentElement) => {
     }
 }
 
-/*
-    Struttura del dizionario
-    { 
-        "Cardiologia-27092024-9": "Mario Rossi"
-        "Oncologia-21042025-12", "Sandra Bianchi"
-        ...
-    }
-*/
 
-/*
-    BATTAGLIA NAVALE:
-    - Formato della tabella
-    [Orario, g1, g2, g3, g4, g5]
-    [1, "", "", "", "", ""]
-    [2, "", "", "", "", ""]
-    [3, "", "", "", "", ""]
-    [4, "", "", "", "", ""]
-
-    Trovare colonna corrispondente al giorno j
-    Trovare la riga corrispondente all'orario i
-*/
 
 const initTable = (parentElement) => {
     let date;
