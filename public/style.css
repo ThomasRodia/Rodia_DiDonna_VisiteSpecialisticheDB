@@ -4,3 +4,6 @@
 .underPadding2{
     margin-bottom : 10px ;
 }
+table {
+    border-collapse:8px 8px 8px 8px !important;
+}

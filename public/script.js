@@ -38,24 +38,7 @@ function transformTableDatas(tableDatasArray) {
 
     return result;
 }
-/*let data={
-    idtype: 1,
-    date :"2025-02-18",
-    hour : 8,
-    name : "Pippo"
-}
-fetch("/prenotation/add", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  })
-    .then((response) => response.json())
-    .then((result) => {
-      console.log("Success:", result);
-    });
-    */
+
    let tableDatas;
     fetch("/prenotation/get", {
         method: "GET",
@@ -157,6 +140,7 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
             document.getElementById("prompt").innerHTML = "Prenotazione errata";
         }
         appTable.render();
+        
     });
     
     
