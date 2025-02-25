@@ -13,7 +13,7 @@ const createListOfButtons = (parentElement) => {
                 <button type="button" id="button${index}" class="btn btn-dark">${e}</a>
             `).join("\n");
             parentElement.innerHTML = buttons;
-            const btnList = document.querySelectorAll(".btn btn-dark");
+            const btnList = document.querySelectorAll(".btn-dark");
 
             btnList.forEach((btn) => {
                 btn.onclick = function () {

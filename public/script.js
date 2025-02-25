@@ -89,6 +89,7 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
         if (data.length > 0 && result[1].length > 0 && result[2].length > 0 && check) {
             
             let string =listOfButtons.getCurrentSelectedCategory();
+            console.log("categoria"+string);
             let idType;
             if(string==="Cardiologia"){
                 idType=1;
