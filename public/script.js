@@ -50,6 +50,8 @@ function transformTableDatas(tableDatasArray) {
       .then(data => {
         tableDatas = data;
         tableDatas= transformTableDatas(tableDatas)
+        });
+        
       
 
 fetch("./conf.json").then(r => r.json()).then((keyCache) => {
@@ -86,7 +88,7 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
             }
         }
     
-        if (data.length > 0 && result[1].length > 0 && result[2].length > 0 && check) {
+        if (data.length > 0 && result[1].length > 0 && result[2].length > 0) {
             
             let string =listOfButtons.getCurrentSelectedCategory();
             console.log("categoria"+string);
@@ -112,8 +114,10 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
                 name: result[2],  
                 idtype: idType  
             };
-            console.log(prenotazioneData);
-
+            const formattedDateString = `${data}`; // Già nel formato GGMMYYYY
+            const key = `${listOfButtons.getCurrentSelectedCategory()}-${formattedDateString}-${result[1]}`;
+            tableDatas[key] = result[2];
+            console.log("tabledatas"+tableDatas);
             fetch("/prenotation/add", {
                 method: "POST",
                 headers: {
@@ -125,12 +129,7 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
             .then((result) => {
                 console.log("Success:", result);
                 // Rende aggiornata la tabella
-                appTable.build(
-                    appTable.getCurrentDate(),
-                    chooseType(tableDatas, listOfButtons.getCurrentSelectedCategory()),
-                    appTable.getCurrentTypo()
-                );
-                appTable.render();
+                
                 document.getElementById("prompt").innerHTML = "Prenotazione effettuata!";
             })
             .catch((error) => {
@@ -140,6 +139,11 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
         } else {
             document.getElementById("prompt").innerHTML = "Prenotazione errata";
         }
+        appTable.build(
+            appTable.getCurrentDate(),
+            chooseType(tableDatas, listOfButtons.getCurrentSelectedCategory()),
+            appTable.getCurrentTypo()
+        );
         appTable.render();
         
     });
@@ -172,6 +176,7 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
     }
 
     previous.onclick = () => {
+        console.log(tableDatas);
         const newDate = new Date(appTable.getCurrentDate());
         newDate.setDate(newDate.getDate() - 7)
         appTable.build(
@@ -198,6 +203,7 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
     }, 100)
 
     setInterval(() => {
+        console.log(tableDatas);
         appTable.build(
             appTable.getCurrentDate(), 
             chooseType(tableDatas, appTable.getCurrentTypo),
@@ -207,4 +213,3 @@ fetch("./conf.json").then(r => r.json()).then((keyCache) => {
 
     document.getElementById("button0").click()
 });
-})
